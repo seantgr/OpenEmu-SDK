@@ -736,7 +736,10 @@ static CGFloat OEHACScaleValueWithCalibration(
             return NO;
         }
         const OEHACUSBAcknowledgmentOutputReport *response = respData.bytes;
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wenum-compare"
         if (response->reportID != OEHACInputReportIDUSBSubcommandReply) {
+#pragma clang diagostic pop
             NSLog(@"[dev %p] Invalid ACK from controller (USB subcommand %02X)", self, cmdid);
             return NO;
         }
